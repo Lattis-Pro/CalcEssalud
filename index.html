@@ -298,15 +298,19 @@
         </div>
 
         <!-- Acciones Directas -->
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2.5">
           <button onclick="toggleDarkMode()" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm transition hover:scale-105" title="Modo Oscuro/Claro">
             <i id="darkModeIcon" class="fa-solid fa-sun text-amber-400"></i>
           </button>
           
-          <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-[10px] text-slate-500 shadow-sm">
+          <div class="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-[10px] text-slate-500 shadow-sm">
             <i class="fa-solid fa-code text-[#002A8F]"></i>
             <span>Por: <strong class="text-slate-700">Luis Angel Garcia C. (Luis Lattis)</strong></span>
           </div>
+
+          <button onclick="limpiarFormulario()" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-red-600 text-white shadow hover:bg-red-700 transition flex items-center gap-1.5" title="Vaciar todas las casillas para nueva evaluación">
+            <i class="fa-solid fa-broom"></i> Limpiar Datos
+          </button>
 
           <button onclick="abrirModalCronograma()" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#002A8F] text-white shadow hover:bg-blue-900 transition flex items-center gap-1.5">
             <i class="fa-solid fa-table-list text-amber-400"></i> Cronograma de Pagos
@@ -327,6 +331,9 @@
           <p class="text-xs text-slate-600 mt-0.5">Calcula con exactitud el RCI al 40%, ratios de endeudamiento SBS (70%) y tabla de amortización con periodo de gracia.</p>
         </div>
         <div class="flex items-center gap-2">
+          <button onclick="limpiarFormulario()" class="px-3.5 py-2 rounded-full text-xs font-bold bg-white text-red-600 border border-red-200 hover:bg-red-50 transition flex items-center gap-1.5 shadow-sm">
+            <i class="fa-solid fa-rotate-left"></i> Nueva Evaluación
+          </button>
           <button onclick="abrirCamarguitoManual()" class="btn-bcp-orange text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 shadow-sm">
             <i class="fa-solid fa-comments"></i> Consejos de Camarguito
           </button>
@@ -373,9 +380,14 @@
 
           <!-- 2. Totales de Boleta -->
           <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-slate-200 animate-card">
-            <h3 class="text-xs font-black text-[#002A8F] uppercase tracking-wider mb-2.5 flex items-center">
-              <i class="fa-solid fa-file-invoice-dollar text-emerald-600 mr-1.5"></i> Resumen de Boleta de Pago
-            </h3>
+            <div class="flex justify-between items-center mb-2.5">
+              <h3 class="text-xs font-black text-[#002A8F] uppercase tracking-wider flex items-center">
+                <i class="fa-solid fa-file-invoice-dollar text-emerald-600 mr-1.5"></i> Resumen de Boleta de Pago
+              </h3>
+              <button onclick="limpiarFormulario()" class="text-[10px] font-bold text-red-600 hover:underline flex items-center gap-1">
+                <i class="fa-solid fa-trash-can"></i> Vaciar todo
+              </button>
+            </div>
 
             <div class="space-y-2">
               <div>
@@ -675,7 +687,7 @@
               <div class="text-3xl font-black mt-0.5 tracking-tight select-text" id="txtResultado">CALIFICA</div>
               <p class="text-xs mt-0.5 max-w-md font-medium select-text" id="detResultado">El servidor cuenta con margen disponible en boleta y holgura en el sistema financiero.</p>
               
-              <div class="mt-2.5">
+              <div class="mt-2.5 flex flex-wrap gap-2">
                 <button onclick="abrirModalCronograma()" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#002A8F] text-white shadow hover:bg-blue-900 transition flex items-center gap-1.5">
                   <i class="fa-solid fa-table-list text-amber-400"></i> Ver Tabla de Amortización Completa
                 </button>
@@ -827,7 +839,7 @@
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
         <span class="font-semibold text-slate-700">Calculadora Convenio ESSALUD - BCP</span>
-        <span class="text-slate-400">• v3.4 Oficial Auditada</span>
+        <span class="text-slate-400">• v3.6 Oficial Version 18.09</span>
       </div>
 
       <div class="bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 text-center sm:text-right">
@@ -1054,6 +1066,59 @@
         }
       };
 
+      // ================= FUNCIÓN LIMPIAR DATOS =================
+      window.limpiarFormulario = function() {
+        // 1. Limpiar todos los casilleros de boleta y descuentos a 0.00
+        const idsBoleta = [
+          "inpTotalIngresos", "inpIngresoNetoBoleta", "inpCompraDeudaBoleta",
+          "inp_D20", "inp_D21", "inp_D22", "inp_D23", "inp_D24", "inp_D25",
+          "inp_G20", "inp_G21", "inp_G22", "inp_G23", "inp_G24",
+          "inp_K20", "inp_K21", "inp_K22", "inp_K23", "inp_K24", "inp_K25",
+          "inp_K29", "inp_K30",
+          "inp_D34", "inp_D35", "inp_D36", "inp_G34", "inp_G35", "inp_G36", "inp_K34", "inp_K35", "inp_K36",
+          "inp_D40", "inp_D41", "inp_D42", "inp_D43", "inp_D44", "inp_D45",
+          "inp_G40", "inp_G41", "inp_G42", "inp_G43", "inp_G44",
+          "inp_K40", "inp_K41", "inp_K42", "inp_K43", "inp_K44",
+          "inp_D49", "inp_D50", "inp_D51", "inp_D52", "inp_D53", "inp_D54", "inp_D55", "inp_D56", "inp_D57", "inp_D58",
+          "inp_G49", "inp_G50", "inp_G51", "inp_G52", "inp_G53", "inp_G54", "inp_G55", "inp_G56", "inp_G57", "inp_G58", "inp_G59",
+          "inp_K49", "inp_K50", "inp_K51", "inp_K52", "inp_K53", "inp_K54", "inp_K55", "inp_K56", "inp_K57", "inp_K58", "inp_K59"
+        ];
+
+        idsBoleta.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.value = "0.00";
+        });
+
+        // 2. Vaciar por completo las celdas de la tabla de deudas SBS / BCP
+        TIPOS_DEUDA.forEach(d => {
+          ["E", "G", "I", "K"].forEach(col => {
+            const el = document.getElementById(`inp_${col}${d.id}`);
+            if (el) el.value = "";
+          });
+        });
+
+        // 3. Restablecer parámetros del crédito a valores base del convenio
+        document.getElementById("inpMonto").value = "0";
+        document.getElementById("selPlazo").value = "72";
+        document.getElementById("inpTEA").value = "9.80";
+        document.getElementById("selDesgravamen").value = "Sin retorno";
+        document.getElementById("selSegmento").value = "E";
+
+        const hoy = new Date();
+        const yyyy = hoy.getFullYear();
+        const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+        const dd = String(hoy.getDate()).padStart(2, '0');
+        document.getElementById("inpFechaDesembolso").value = `${yyyy}-${mm}-${dd}`;
+
+        // 4. Recalcular todo y enfocar el primer campo
+        recalcular();
+        const primerInput = document.getElementById("inpTotalIngresos");
+        if (primerInput) {
+          primerInput.focus();
+          primerInput.select();
+        }
+      };
+
       document.addEventListener("DOMContentLoaded", () => {
         if (localStorage.getItem('theme') === 'light') {
           document.documentElement.classList.remove('dark');
@@ -1132,24 +1197,20 @@
       }
 
       function generarCronogramaCompleto(monto, plazo, tea, desgravamenMensual, fechaDesembStr) {
-        if (!monto || monto <= 0 || !plazo || plazo <= 0) {
-          return { cuota: 0, fPrimerVenc: new Date(), pgOficial: 0, filas: [], intPre: 0, desgPre: 0 };
-        }
-
-        const fParts = fechaDesembStr.split("-");
+        const fParts = (fechaDesembStr || "2026-10-12").split("-");
         const fDesemb = new Date(parseInt(fParts[0]), parseInt(fParts[1]) - 1, parseInt(fParts[2]));
-
         const diaVenc = 15;
         const pf = 2; // Cáratula!E103
-        
-        // Base!K2: PG oficial para ESSALUD (0 a 1)
         const pgOficial = fDesemb.getDate() <= diaVenc ? 1 : 0;
-        
-        // Factor técnico de cálculo en Cáratula!E101: =IF(DAY(K72)<=E102, 2, 1)
-        const factorTecnicoE101 = fDesemb.getDate() <= diaVenc ? 2 : 1;
-
         const fBaseVenc = addMonths(fDesemb, pf);
         const fPrimerVenc = new Date(fBaseVenc.getFullYear(), fBaseVenc.getMonth(), diaVenc);
+
+        if (!monto || monto <= 0 || !plazo || plazo <= 0) {
+          return { cuota: 0, fPrimerVenc, pgOficial, filas: [], intPre: 0, desgPre: 0 };
+        }
+
+        // Factor técnico de cálculo en Cáratula!E101: =IF(DAY(K72)<=E102, 2, 1)
+        const factorTecnicoE101 = fDesemb.getDate() <= diaVenc ? 2 : 1;
 
         const tna365 = (Math.pow(1 + tea, 1 / 12) - 1) * 12 * (365 / 360);
         const r74 = desgravamenMensual * 12;
@@ -1454,17 +1515,22 @@
         const fVenc = resCrono.fPrimerVenc;
         document.getElementById("lblPrimerVenc").textContent = `${String(fVenc.getDate()).padStart(2, '0')}/${String(fVenc.getMonth()+1).padStart(2, '0')}/${fVenc.getFullYear()}`;
 
-        evaluarDictamen(dictamenSBS, cuota, k65, cem);
-        actualizarMensajeCamarguito(dictamenSBS, cuota, k65, cem);
+        evaluarDictamen(dictamenSBS, cuota, k65, cem, monto, k14);
+        actualizarMensajeCamarguito(dictamenSBS, cuota, k65, cem, monto, k14);
       }
 
-      function evaluarDictamen(dictamenSBS, cuota, netoDisp, cem) {
+      function evaluarDictamen(dictamenSBS, cuota, netoDisp, cem, monto, k14) {
         const card = document.getElementById("cardResultado");
         const txt = document.getElementById("txtResultado");
         const sub = document.getElementById("subResultado");
         const det = document.getElementById("detResultado");
 
-        if (dictamenSBS === "Sobre endeudado") {
+        if (k14 <= 0 && monto <= 0) {
+          card.className = "p-4 rounded-2xl shadow-md border bg-slate-50 border-slate-300 flex flex-col sm:flex-row justify-between items-center gap-4 transition-all duration-300";
+          txt.textContent = "EN ESPERA";
+          sub.textContent = "INGRESE DATOS PARA EVALUAR";
+          det.textContent = "Digita los ingresos de la boleta y el monto solicitado para obtener el dictamen.";
+        } else if (dictamenSBS === "Sobre endeudado") {
           card.className = "p-4 rounded-2xl shadow-md border badge-sobreendeudado flex flex-col sm:flex-row justify-between items-center gap-4 transition-all duration-300";
           txt.textContent = "NO CALIFICA";
           sub.textContent = "DICTAMEN: SOBRE ENDEUDADO";
@@ -1487,11 +1553,13 @@
         }
       }
 
-      function actualizarMensajeCamarguito(dictamenSBS, cuota, netoDisp, cem) {
+      function actualizarMensajeCamarguito(dictamenSBS, cuota, netoDisp, cem, monto, k14) {
         const textElem = document.getElementById("camarguitoText");
         if (!textElem) return;
 
-        if (dictamenSBS === "Sobre endeudado") {
+        if (k14 <= 0 && monto <= 0) {
+          textElem.innerHTML = "🧹 <strong>Formulario limpio:</strong> Ingresa los datos de la boleta del cliente y el monto a evaluar.";
+        } else if (dictamenSBS === "Sobre endeudado") {
           textElem.innerHTML = "⚠️ <strong>Alerta SBS:</strong> El endeudamiento supera el 70%. Se recomienda evaluar una <strong>Compra de Deuda</strong>.";
         } else if (cuota > netoDisp) {
           const dif = (cuota - netoDisp).toFixed(2);
