@@ -29,6 +29,11 @@
       -webkit-user-select: none;
     }
 
+    .select-text {
+      user-select: text !important;
+      -webkit-user-select: text !important;
+    }
+
     /* Estilos Dark Mode Avanzados */
     html.dark body { background-color: #0f172a; color: #f1f5f9; }
     html.dark .bg-white { background-color: #1e293b !important; }
@@ -37,7 +42,7 @@
     html.dark .text-slate-800, html.dark .text-slate-700 { color: #f8fafc !important; }
     html.dark .text-slate-600, html.dark .text-slate-500 { color: #cbd5e1 !important; }
     html.dark .text-slate-400 { color: #94a3b8 !important; }
-    html.dark .text-[#002A8F] { color: #60a5fa !important; }
+    html.dark .text-\[\#002A8F\] { color: #60a5fa !important; }
     html.dark .text-blue-900 { color: #93c5fd !important; }
     html.dark .text-blue-700 { color: #60a5fa !important; }
     html.dark .input-cell { background-color: #0f172a !important; color: #f8fafc !important; border-color: #475569 !important; }
@@ -283,7 +288,7 @@
           <span class="text-slate-300 font-light text-xl">×</span>
 
           <div class="bcp-badge-3d select-none cursor-pointer" title="Canal Oficial BCP Convenios">
-            <img src="data:image/png;base64,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" alt="BCP" class="bcp-logo-img">
+            <img src="data:image/png;base64,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" alt="BCP" class="bcp-logo-img">
           </div>
 
           <div class="ml-3 pl-3 border-l border-slate-200 hidden md:block">
@@ -300,7 +305,7 @@
           
           <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-[10px] text-slate-500 shadow-sm">
             <i class="fa-solid fa-code text-[#002A8F]"></i>
-            <span>Por: <strong class="text-slate-700">Luis Angel Garcia C. (Lattis)</strong></span>
+            <span>Por: <strong class="text-slate-700">Luis Angel Garcia C. (Luis Lattis)</strong></span>
           </div>
 
           <button onclick="abrirModalCronograma()" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#002A8F] text-white shadow hover:bg-blue-900 transition flex items-center gap-1.5">
@@ -598,6 +603,7 @@
                   <span><i class="fa-solid fa-building-user text-blue-700 mr-1"></i> Descuentos Institucionales (30 Casilleros Oficiales)</span>
                   <span class="text-xs group-open:rotate-180 transition-transform">▼</span>
                 </summary>
+                <p class="text-[9.5px] text-slate-500 mt-1">*Según matriz oficial BCP, solo la casilla <strong>DIVERSOS (G59)</strong> deduce directamente en el cálculo de K65.</p>
                 
                 <div class="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-blue-200 text-[10px]">
                   <!-- Columna 1 Institucional -->
@@ -630,8 +636,8 @@
                     <div><label class="field-label">8237 -D Guardias</label><input type="number" id="inp_G57" value="0" step="0.01" class="input-cell"></div>
                     <div><label class="field-label">8238 -D G Julio-Dic</label><input type="number" id="inp_G58" value="0" step="0.01" class="input-cell"></div>
                     <div>
-                      <label class="field-label text-blue-900 font-bold">DIVERSOS (G59)</label>
-                      <input type="number" id="inp_G59" value="0" step="0.01" class="input-cell font-bold border-blue-300 bg-white">
+                      <label class="field-label text-blue-900 font-bold">DIVERSOS (G59) *</label>
+                      <input type="number" id="inp_G59" value="0" step="0.01" class="input-cell font-bold border-blue-400 bg-white">
                     </div>
                   </div>
 
@@ -666,8 +672,8 @@
           <div id="cardResultado" class="p-4 rounded-2xl shadow-md border flex flex-col sm:flex-row justify-between items-center gap-4 transition-all duration-300 glow-califica animate-card">
             <div>
               <div class="text-[10px] uppercase tracking-wider font-extrabold opacity-80" id="subResultado">Dictamen Convenio ESSALUD</div>
-              <div class="text-3xl font-black mt-0.5 tracking-tight" id="txtResultado">CALIFICA</div>
-              <p class="text-xs mt-0.5 max-w-md font-medium" id="detResultado">El servidor cuenta con margen disponible en boleta y holgura en el sistema financiero.</p>
+              <div class="text-3xl font-black mt-0.5 tracking-tight select-text" id="txtResultado">CALIFICA</div>
+              <p class="text-xs mt-0.5 max-w-md font-medium select-text" id="detResultado">El servidor cuenta con margen disponible en boleta y holgura en el sistema financiero.</p>
               
               <div class="mt-2.5">
                 <button onclick="abrirModalCronograma()" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#002A8F] text-white shadow hover:bg-blue-900 transition flex items-center gap-1.5">
@@ -679,15 +685,15 @@
             <div class="flex gap-2 text-right w-full sm:w-auto justify-end">
               <div class="bg-white/95 backdrop-blur-sm p-2.5 rounded-xl border border-slate-200 shadow-sm flex-1 sm:flex-initial">
                 <span class="text-[9px] text-slate-500 uppercase font-bold block">Neto Disponible</span>
-                <span id="resNetoDisp" class="text-sm sm:text-base font-black text-slate-800">S/ 2,773.29</span>
+                <span id="resNetoDisp" class="text-sm sm:text-base font-black text-slate-800 select-text">S/ 2,773.29</span>
               </div>
               <div class="bg-white/95 backdrop-blur-sm p-2.5 rounded-xl border border-blue-200 shadow-sm flex-1 sm:flex-initial">
                 <span class="text-[9px] text-[#002A8F] uppercase font-bold block">Cuota Mensual</span>
-                <span id="resCuota" class="text-sm sm:text-base font-black text-[#002A8F]">S/ 2,771.74</span>
+                <span id="resCuota" class="text-sm sm:text-base font-black text-[#002A8F] select-text">S/ 2,771.74</span>
               </div>
               <div class="bg-white/95 backdrop-blur-sm p-2.5 rounded-xl border border-slate-200 shadow-sm flex-1 sm:flex-initial">
                 <span class="text-[9px] text-slate-500 uppercase font-bold block">% Endeudamiento</span>
-                <span id="resEndeudamiento" class="text-sm sm:text-base font-black text-amber-700">27.20%</span>
+                <span id="resEndeudamiento" class="text-sm sm:text-base font-black text-amber-700 select-text">27.20%</span>
               </div>
             </div>
           </div>
@@ -696,11 +702,11 @@
           <div class="grid grid-cols-2 gap-3 text-xs">
             <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
               <span class="text-slate-500 font-bold block text-[10px] uppercase">Total Ingreso Neto (K63)</span>
-              <span id="lblTotalIngresoNeto" class="text-base font-black text-slate-800">S/ 6,933.23</span>
+              <span id="lblTotalIngresoNeto" class="text-base font-black text-slate-800 select-text">S/ 6,933.23</span>
             </div>
             <div class="bg-white p-3 rounded-xl border border-blue-200 shadow-sm bg-blue-50/20">
               <span class="text-[#002A8F] font-bold block text-[10px] uppercase">Primer Cálculo Neto Disp (K65)</span>
-              <span id="lblPrimerNetoDisp" class="text-base font-black text-[#002A8F]">S/ 2,773.29</span>
+              <span id="lblPrimerNetoDisp" class="text-base font-black text-[#002A8F] select-text">S/ 2,773.29</span>
             </div>
           </div>
 
@@ -749,7 +755,7 @@
             </div>
 
             <div class="grid grid-cols-3 gap-2 mt-3 pt-2.5 border-t border-slate-100 text-[11px] text-slate-500">
-              <div><strong>Primer Vencimiento:</strong> <span id="lblPrimerVenc" class="text-slate-800 font-bold">15/12/2026</span></div>
+              <div><strong>Primer Vencimiento:</strong> <span id="lblPrimerVenc" class="text-slate-800 font-bold select-text">15/12/2026</span></div>
               <div><strong>Estado de Cuenta:</strong> <span class="text-slate-800 font-bold">Virtual</span></div>
               <div><strong>Moneda:</strong> <span class="text-slate-800 font-bold">Soles (S/)</span></div>
             </div>
@@ -795,15 +801,15 @@
             <div class="mt-3.5 pt-3 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
               <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 flex justify-between items-center">
                 <span class="font-bold text-slate-600">% Endeudamiento:</span>
-                <span id="lblPorcEndeudamiento" class="font-black text-slate-800 text-sm">27.20%</span>
+                <span id="lblPorcEndeudamiento" class="font-black text-slate-800 text-sm select-text">27.20%</span>
               </div>
               <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 flex justify-between items-center">
                 <span class="font-bold text-slate-600">CEM (70%):</span>
-                <span id="lblCEM" class="font-black text-emerald-700 text-sm">S/ 4,000.30</span>
+                <span id="lblCEM" class="font-black text-emerald-700 text-sm select-text">S/ 4,000.30</span>
               </div>
               <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 flex justify-between items-center">
                 <span class="font-bold text-slate-600">Dictamen SBS:</span>
-                <span id="lblDictamenSBS" class="font-black text-emerald-600 text-sm">Continuar</span>
+                <span id="lblDictamenSBS" class="font-black text-emerald-600 text-sm select-text">Continuar</span>
               </div>
             </div>
           </div>
@@ -821,12 +827,12 @@
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
         <span class="font-semibold text-slate-700">Calculadora Convenio ESSALUD - BCP</span>
-        <span class="text-slate-400">• v3.3 Oficial + 24/10</span>
+        <span class="text-slate-400">• v3.4 Oficial Auditada</span>
       </div>
 
       <div class="bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 text-center sm:text-right">
         <span class="text-slate-400 text-[10px] uppercase font-bold block tracking-wider">Arquitectura y Desarrollo:</span>
-        <span class="font-extrabold text-[#002A8F] text-xs">Luis Angel Garcia Cano (Lattis)</span>
+        <span class="font-extrabold text-[#002A8F] text-xs">Luis Angel Garcia Cano (Luis Lattis)</span>
         <span class="text-slate-500 font-medium text-[11px] block">Analista Comercial - Back Office Senior</span>
       </div>
     </div>
@@ -856,10 +862,10 @@
       </div>
 
       <!-- Resumen Métricas del Cronograma -->
-      <div class="bg-slate-50 px-5 py-3 border-b border-slate-200 grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs flex-shrink-0">
+      <div class="bg-slate-50 px-5 py-3 border-b border-slate-200 grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs flex-shrink-0 select-text">
         <div class="p-2 bg-white rounded-xl border border-slate-200">
           <span class="text-slate-500 block text-[9px] uppercase font-bold">Monto del Préstamo</span>
-          <span id="lblCronoMonto" class="font-black text-[#002A8F] text-xs sm:text-sm">S/ 65,100.00</span>
+          <span id="lblCronoMonto" class="font-black text-[#002A8F] text-xs sm:text-sm">S/ 144,400.00</span>
         </div>
         <div class="p-2 bg-white rounded-xl border border-slate-200">
           <span class="text-slate-500 block text-[9px] uppercase font-bold">Plazo / Cuotas</span>
@@ -875,12 +881,12 @@
         </div>
         <div class="p-2 bg-blue-50/80 rounded-xl border border-blue-200 col-span-2 sm:col-span-1">
           <span class="text-[#002A8F] block text-[9px] uppercase font-bold">Cuota Mensual Fija</span>
-          <span id="lblCronoCuotaFija" class="font-black text-[#002A8F] text-xs sm:text-sm">S/ 1,249.49</span>
+          <span id="lblCronoCuotaFija" class="font-black text-[#002A8F] text-xs sm:text-sm">S/ 2,771.74</span>
         </div>
       </div>
 
       <!-- Tabla Scrollable del Cronograma -->
-      <div class="overflow-y-auto overflow-x-auto flex-1 p-4 bg-white dark:bg-slate-800">
+      <div class="overflow-y-auto overflow-x-auto flex-1 p-4 bg-white dark:bg-slate-800 select-text">
         <table class="w-full text-xs text-left border-collapse" id="tblCronogramaCompleto">
           <thead class="bg-slate-100 text-slate-700 uppercase tracking-wider sticky top-0 border-b border-slate-200 font-bold">
             <tr>
@@ -900,7 +906,7 @@
 
       <!-- Pie del Modal -->
       <div class="p-3 bg-slate-50 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500 flex-shrink-0">
-        <span>* No incluye ITF ni gastos por envío físico de estado de cuenta.</span>
+        <span>* Incluye intereses y desgravamen del periodo de gracia según hoja Cronograma (I17 y J17). No incluye ITF.</span>
         <button onclick="cerrarModalCronograma()" class="px-5 py-1.5 rounded-full font-bold bg-slate-200 text-slate-700 hover:bg-slate-300 transition">
           Cerrar
         </button>
@@ -921,7 +927,7 @@
       <p id="camarguitoText" class="leading-relaxed font-medium text-slate-600">¡Hola! Recuerda que en ESSALUD el RCI es 40%, corte el día 30, vencimiento el 15 y el periodo de gracia es de 0 a 1.</p>
       
       <div class="mt-2 pt-1 border-t border-slate-100 flex justify-between items-center text-[10px] text-slate-400">
-        <span>Diseñado por Lattis</span>
+        <span>Diseñado por Luis Lattis</span>
         <button type="button" onclick="cerrarCamarguitoGlobo(event)" class="text-blue-600 hover:underline font-semibold">Entendido</button>
       </div>
     </div>
@@ -1028,6 +1034,8 @@
 
       let camarguitoGloboCerrado = true;
       let cronogramaFilasGeneradas = [];
+      let cronogramaIntPre = 0;
+      let cronogramaDesgPre = 0;
 
       window.toggleDarkMode = function() {
         document.documentElement.classList.toggle('dark');
@@ -1035,7 +1043,7 @@
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
         
         const icon = document.getElementById('darkModeIcon');
-        if(isDark) {
+        if (isDark) {
           icon.classList.remove('fa-moon');
           icon.classList.add('fa-sun');
           icon.classList.replace('text-slate-600', 'text-amber-400');
@@ -1047,23 +1055,22 @@
       };
 
       document.addEventListener("DOMContentLoaded", () => {
-        // Init theme
         if (localStorage.getItem('theme') === 'light') {
-            document.documentElement.classList.remove('dark');
-            setTimeout(() => {
-                const icon = document.getElementById('darkModeIcon');
-                if(icon) {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                    icon.classList.replace('text-amber-400', 'text-slate-600');
-                }
-            }, 0);
+          document.documentElement.classList.remove('dark');
+          setTimeout(() => {
+            const icon = document.getElementById('darkModeIcon');
+            if (icon) {
+              icon.classList.remove('fa-sun');
+              icon.classList.add('fa-moon');
+              icon.classList.replace('text-amber-400', 'text-slate-600');
+            }
+          }, 0);
         }
 
         initDeudasTable();
         vincularEventos();
 
-        // Cargar valores iniciales simulados o del form
+        // Valores iniciales por defecto
         document.getElementById("inp_G90").value = "1629.99";
         document.getElementById("inp_I90").value = "20837.79";
         document.getElementById("inp_E91").value = "0";
@@ -1085,7 +1092,7 @@
             <td class="p-1 border-r border-slate-100"><input type="number" id="inp_G${d.id}" placeholder="" step="0.01" class="w-full text-center p-1 border border-slate-200 rounded focus:ring-1 focus:ring-[#002A8F] font-mono text-xs input-cell"></td>
             <td class="p-1 border-r border-slate-100"><input type="number" id="inp_I${d.id}" placeholder="" step="0.01" class="w-full text-center p-1 border border-slate-200 rounded focus:ring-1 focus:ring-[#002A8F] font-mono text-xs input-cell"></td>
             <td class="p-1 border-r border-slate-100"><input type="number" id="inp_K${d.id}" placeholder="" step="0.01" class="w-full text-center p-1 border border-slate-200 rounded focus:ring-1 focus:ring-[#002A8F] font-mono text-xs input-cell"></td>
-            <td class="p-2 text-right font-black text-[#002A8F]" id="lbl_L${d.id}">S/ 0.00</td>
+            <td class="p-2 text-right font-black text-[#002A8F] select-text" id="lbl_L${d.id}">S/ 0.00</td>
           `;
           tbody.appendChild(tr);
         });
@@ -1110,10 +1117,11 @@
         return parseFloat(el.value);
       }
 
+      // Función EDATE segura (evita desbordamiento en días 29, 30 y 31)
       function addMonths(date, months) {
-        const d = new Date(date);
-        const targetMonth = d.getMonth() + months;
-        d.setMonth(targetMonth);
+        const d = new Date(date.getFullYear(), date.getMonth() + months, 1);
+        const maxDays = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+        d.setDate(Math.min(date.getDate(), maxDays));
         return d;
       }
 
@@ -1124,7 +1132,9 @@
       }
 
       function generarCronogramaCompleto(monto, plazo, tea, desgravamenMensual, fechaDesembStr) {
-        if (!monto || monto <= 0 || !plazo || plazo <= 0) return { cuota: 0, fPrimerVenc: new Date(), pgOficial: 0, filas: [] };
+        if (!monto || monto <= 0 || !plazo || plazo <= 0) {
+          return { cuota: 0, fPrimerVenc: new Date(), pgOficial: 0, filas: [], intPre: 0, desgPre: 0 };
+        }
 
         const fParts = fechaDesembStr.split("-");
         const fDesemb = new Date(parseInt(fParts[0]), parseInt(fParts[1]) - 1, parseInt(fParts[2]));
@@ -1150,17 +1160,19 @@
         const o96 = (o76 + r76) / (1 - Math.pow(1 + o76 + r76, -plazo));
 
         const c23 = fPrimerVenc;
-        const c22 = addMonths(c23, -1);
-        const c21 = addMonths(c22, -1);
+        const c22 = new Date(c23.getFullYear(), c23.getMonth() - 1, diaVenc);
+        const c21 = new Date(c22.getFullYear(), c22.getMonth() - 1, diaVenc);
 
         let c20 = null;
         if (fDesemb.getDate() < diaVenc && factorTecnicoE101 === 2) {
-          c20 = addMonths(c21, -1);
+          c20 = new Date(c21.getFullYear(), c21.getMonth() - 1, diaVenc);
         }
 
         let cuota = 0;
         let saldoCapInicial = 0;
-        let capitalG23 = 0; // CORRECCIÓN DEFINITIVA PARA LA BASE DEL CRONOGRAMA
+        let capitalG23 = 0;
+        let intPre = 0;  // Acumula I20 + I21 + I22 para cuadrar con Cronograma!I17
+        let desgPre = 0; // Acumula J20 + J21 + J22 para cuadrar con Cronograma!J17
 
         if (c20 === null) {
           const d21 = diffDays(c21, fDesemb);
@@ -1181,7 +1193,9 @@
           const f23 = g22;
           cuota = (f23 + j21 + j22) * o96;
           saldoCapInicial = f23;
-          capitalG23 = f23; // SE ALMACENA CAPITALIZACIÓN PREVIA A CUOTA 1
+          capitalG23 = f23;
+          intPre = i21 + i22;
+          desgPre = j21 + j22;
         } else {
           const d20 = diffDays(c20, fDesemb);
           const f20 = factorTecnicoE101 === 2 ? monto : 0;
@@ -1199,7 +1213,7 @@
 
           const e22 = diffDays(c22, c21);
           const g22 = g21 + i21 + j21;
-          const f22 = g22; // CORRECCIÓN 1: F22 TOMA EL CAPITAL ACTUALIZADO
+          const f22 = g22;
           const h22 = o75 * e22;
           const i22 = h22 * f22;
           const j22 = r75 * e22 * g22;
@@ -1207,7 +1221,9 @@
           const g23 = g22 + i22 + j22;
           cuota = (g23 + j20 + j21 + j22) * o96;
           saldoCapInicial = g22;
-          capitalG23 = g23; // CORRECCIÓN 2: SE ALMACENA CAPITALIZACIÓN PREVIA A CUOTA 1 (EXCEL G23)
+          capitalG23 = g23;
+          intPre = i20 + i21 + i22;
+          desgPre = j20 + j21 + j22;
         }
 
         // Generar filas del cronograma
@@ -1216,7 +1232,7 @@
         let fechaAnt = c22;
 
         for (let k = 1; k <= plazo; k++) {
-          const fechaCuota = addMonths(c23, k - 1);
+          const fechaCuota = new Date(c23.getFullYear(), c23.getMonth() + (k - 1), diaVenc);
           const diasCuota = diffDays(fechaCuota, fechaAnt);
           
           let interes = 0;
@@ -1235,12 +1251,9 @@
               const i20 = (o75 * d20) * monto;
               interes = (h23 * saldoCap) + i20;
             }
-            desg = r75 * diasCuota * (c20 === null ? saldoCap : (saldoCap + (o75 * diffDays(c22, c21) * saldoCap) + (r75 * diffDays(c22, c21) * saldoCap)));
+            desg = r75 * diasCuota * capitalG23;
             amort = cuota - interes - desg;
-            
-            // CORRECCIÓN 3: LA AMORTIZACIÓN RESTA DEL CAPITAL GLOBAL G23 (COMO EL EXCEL OFICIAL BCP)
             saldoFin = capitalG23 - amort;
-            
           } else {
             const factorH = o75 * diasCuota;
             interes = factorH * saldoCap;
@@ -1253,7 +1266,7 @@
             num: k,
             fecha: `${String(fechaCuota.getDate()).padStart(2, '0')}/${String(fechaCuota.getMonth()+1).padStart(2, '0')}/${fechaCuota.getFullYear()}`,
             dias: diasCuota,
-            saldoInicial: k === 1 ? saldoCap : saldoCap, // Mostramos en tabla el saldo inicial del periodo o base
+            saldoInicial: k === 1 ? capitalG23 : saldoCap,
             interes: interes,
             desgravamen: desg,
             amortizacion: amort,
@@ -1265,7 +1278,7 @@
           fechaAnt = fechaCuota;
         }
 
-        return { cuota, fPrimerVenc, pgOficial, filas };
+        return { cuota, fPrimerVenc, pgOficial, filas, intPre, desgPre };
       }
 
       function recalcular() {
@@ -1365,19 +1378,19 @@
           if (e_val !== null) sumaCuotasBCP += e_val;
           if (g_val !== null) sumaCuotasNoBCP += g_val;
 
+          // R84:R91 según Excel (Fila 91 usa siempre N91 = 0.0065833922 fijo)
           let factorR = d.fixedFactor;
           if (d.id === "84") factorR = factSeg.hip;
           else if (d.id === "85") factorR = factSeg.cef;
           else if (d.id === "86") factorR = factSeg.veh;
           else if (d.id === "90") factorR = factSeg.tc;
-          else if (d.id === "91") factorR = factSeg.lnu;
 
           let l_val = 0;
-          if (g_val !== null && i_val !== null && k_val !== null && i_val > 0) {
+          if (g_val !== null && i_val !== null && k_val !== null) {
             if (d.id === "91") {
               l_val = k_val * 0.0065833922;
             } else {
-              l_val = (k_val / i_val) * g_val;
+              l_val = i_val > 0 ? (k_val / i_val) * g_val : 0;
             }
           } else {
             if (g_val === null) {
@@ -1418,7 +1431,7 @@
         document.getElementById("resEndeudamiento").textContent = (porcEndeudamiento * 100).toFixed(2) + "%";
         document.getElementById("lblCEM").textContent = "S/ " + Math.max(0, cem).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
         document.getElementById("lblDictamenSBS").textContent = dictamenSBS;
-        document.getElementById("lblDictamenSBS").className = dictamenSBS === "Continuar" ? "font-black text-emerald-600 text-sm" : "font-black text-red-600 text-sm";
+        document.getElementById("lblDictamenSBS").className = dictamenSBS === "Continuar" ? "font-black text-emerald-600 text-sm select-text" : "font-black text-red-600 text-sm select-text";
 
         // Parámetros de Préstamo y Cronograma
         const monto = getNum("inpMonto");
@@ -1431,6 +1444,8 @@
         const resCrono = generarCronogramaCompleto(monto, plazo, tea, desgravamen, fechaDesembStr);
         const cuota = resCrono.cuota;
         cronogramaFilasGeneradas = resCrono.filas;
+        cronogramaIntPre = resCrono.intPre;
+        cronogramaDesgPre = resCrono.desgPre;
 
         // Mostrar PG oficial de ESSALUD (0 a 1)
         document.getElementById("lblPG").textContent = resCrono.pgOficial;
@@ -1521,8 +1536,9 @@
         document.getElementById("lblCronoPlazo").textContent = `${plazo} meses`;
         document.getElementById("lblCronoCuotaFija").textContent = "S/ " + cuota.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-        let totalInteres = 0;
-        let totalDesg = 0;
+        // Inicializa con los montos preoperativos (filas 20, 21 y 22) para cuadrar con Cronograma!I17 y J17
+        let totalInteres = cronogramaIntPre;
+        let totalDesg = cronogramaDesgPre;
 
         cronogramaFilasGeneradas.forEach(f => {
           totalInteres += f.interes;
